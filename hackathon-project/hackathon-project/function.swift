@@ -29,3 +29,11 @@ struct Const{
     static let UD_EMAIL = "user_default_email_key"
     static let UD_PASSWORD = "user_default_password_key"
 }
+
+func Log(obj: AnyObject?,
+         function: String = #function,
+         line: Int = #line) {
+    #if DEBUG
+        print("[Function:\(function) Line:\(line)] : \(obj)")
+    #endif
+}
