@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02A72BBF5FB4C1A99F2D2FAE /* Pods_hackathon_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */; };
 		172E76721CD8670E00029483 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172E76711CD8670E00029483 /* AssetsLibrary.framework */; };
+		172E76781CD8801800029483 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E76771CD8801800029483 /* AlamofireManager.swift */; };
 		17E185551CD844FE0067759A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185541CD844FE0067759A /* AppDelegate.swift */; };
 		17E185571CD844FE0067759A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185561CD844FE0067759A /* MainViewController.swift */; };
 		17E1855C1CD844FE0067759A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E1855B1CD844FE0067759A /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		172E76711CD8670E00029483 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		172E76771CD8801800029483 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		172E76821CD881F100029483 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/hackathon-project-bdzhvxsolmeckwfcktxpdjrnzwga/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		17E185511CD844FE0067759A /* hackathon-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hackathon-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E185541CD844FE0067759A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E185561CD844FE0067759A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +59,9 @@
 		17E1858F1CD852340067759A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		17E185911CD852880067759A /* BaseViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewContoller.swift; sourceTree = "<group>"; };
 		17E185931CD852BC0067759A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		1C1E45AABEB47473919580AF /* Pods-hackathon-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project.debug.xcconfig"; sourceTree = "<group>"; };
+		B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackathon_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61B4D16F0FC5E63284A364D /* Pods-hackathon-project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon-project.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				172E76721CD8670E00029483 /* AssetsLibrary.framework in Frameworks */,
+				02A72BBF5FB4C1A99F2D2FAE /* Pods_hackathon_project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16203DDEB488AE0BCE86BB3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C1E45AABEB47473919580AF /* Pods-hackathon-project.debug.xcconfig */,
+				E61B4D16F0FC5E63284A364D /* Pods-hackathon-project.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		17E185481CD844FE0067759A = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +107,8 @@
 				17E185681CD844FF0067759A /* hackathon-projectTests */,
 				17E185731CD844FF0067759A /* hackathon-projectUITests */,
 				17E185521CD844FE0067759A /* Products */,
+				223F34768FE8C783B7DFF776 /* Frameworks */,
+				16203DDEB488AE0BCE86BB3E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,7 +175,6 @@
 		17E185841CD8512F0067759A /* Resurce */ = {
 			isa = PBXGroup;
 			children = (
-				172E76711CD8670E00029483 /* AssetsLibrary.framework */,
 				17E1858D1CD851F00067759A /* function.swift */,
 				17E1855B1CD844FE0067759A /* Assets.xcassets */,
 			);
@@ -173,6 +191,7 @@
 		17E185861CD851550067759A /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				172E76771CD8801800029483 /* AlamofireManager.swift */,
 			);
 			name = Http;
 			sourceTree = "<group>";
@@ -226,6 +245,16 @@
 			name = xib;
 			sourceTree = "<group>";
 		};
+		223F34768FE8C783B7DFF776 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				172E76711CD8670E00029483 /* AssetsLibrary.framework */,
+				172E76821CD881F100029483 /* Alamofire.framework */,
+				B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,9 +262,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17E185791CD844FF0067759A /* Build configuration list for PBXNativeTarget "hackathon-project" */;
 			buildPhases = (
+				4BEC618376E5A4331591D4CF /* 📦 Check Pods Manifest.lock */,
 				17E1854D1CD844FE0067759A /* Sources */,
 				17E1854E1CD844FE0067759A /* Frameworks */,
 				17E1854F1CD844FE0067759A /* Resources */,
+				6D092D2239C18517571DF7A8 /* 📦 Embed Pods Frameworks */,
+				51D6561A186E26A1ECFE7CB0 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,11 +384,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BEC618376E5A4331591D4CF /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		51D6561A186E26A1ECFE7CB0 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D092D2239C18517571DF7A8 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		17E1854D1CD844FE0067759A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				172E76781CD8801800029483 /* AlamofireManager.swift in Sources */,
 				17E185571CD844FE0067759A /* MainViewController.swift in Sources */,
 				17E185551CD844FE0067759A /* AppDelegate.swift in Sources */,
 				17E185921CD852880067759A /* BaseViewContoller.swift in Sources */,
@@ -493,8 +574,16 @@
 		};
 		17E1857A1CD844FF0067759A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C1E45AABEB47473919580AF /* Pods-hackathon-project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Release-iphoneos/MBProgressHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+				);
 				INFOPLIST_FILE = "hackathon-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -505,8 +594,16 @@
 		};
 		17E1857B1CD844FF0067759A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E61B4D16F0FC5E63284A364D /* Pods-hackathon-project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Release-iphoneos/MBProgressHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+				);
 				INFOPLIST_FILE = "hackathon-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gizumo.hackathon-project";

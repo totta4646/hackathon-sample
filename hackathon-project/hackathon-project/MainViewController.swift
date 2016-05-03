@@ -13,23 +13,32 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "いちなび"
     }
     
-    func accessCameraroll(button: UIButton) {
+    @IBAction func postAction(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            self.presentViewController(controller, animated: true, completion: nil)
+            let ImagePicker = UIImagePickerController()
+            ImagePicker.delegate = self
+            ImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(ImagePicker, animated: true, completion: nil)
         }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        Log(info);
-    }
-
-    @IBAction func postAction(sender: AnyObject) {
-        Log("post button pushed")
+        let pickedImage:UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let fileManager = NSFileManager.defaultManager()
+        // TODO: 一旦ローカル書き込みで回避
+        let filePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/pickedimage.jpg"
+        let imageData = UIImageJPEGRepresentation(pickedImage, 1.0)
+        fileManager.createFileAtPath(filePath, contents: imageData, attributes: nil)
+        
+        if (fileManager.fileExistsAtPath(filePath)){
+            let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
+            AlamofireManager().testAccess(imageNSURL);
+        }
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
