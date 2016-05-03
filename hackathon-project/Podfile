@@ -1,0 +1,11 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'memamorukun' do
+  pod 'AFNetworking', '~> 2.6'
+  pod 'MBProgressHUD'
+  pod 'SwiftyJSON'
+  pod 'JSONHelper'
+  pod 'CryptoSwift'
+end
+
