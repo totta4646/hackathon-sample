@@ -20,7 +20,6 @@
 		17E185901CD852340067759A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1858F1CD852340067759A /* MainViewController.xib */; };
 		17E185921CD852880067759A /* BaseViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185911CD852880067759A /* BaseViewContoller.swift */; };
 		17E185941CD852BC0067759A /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185931CD852BC0067759A /* Context.swift */; };
-		17F7C8FE1CD8AA5800AF081A /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7C8FD1CD8AA5800AF081A /* HttpUtils.swift */; };
 		3B0F53431CD85C8600982323 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0F53421CD85C8600982323 /* CoreLocation.framework */; };
 		3B0F53451CD85C9000982323 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0F53441CD85C9000982323 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 		17E1858F1CD852340067759A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		17E185911CD852880067759A /* BaseViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewContoller.swift; sourceTree = "<group>"; };
 		17E185931CD852BC0067759A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		17F7C8FD1CD8AA5800AF081A /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
 		1C1E45AABEB47473919580AF /* Pods-hackathon-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0F53421CD85C8600982323 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3B0F53441CD85C9000982323 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -217,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				17E185931CD852BC0067759A /* Context.swift */,
-				17F7C8FD1CD8AA5800AF081A /* HttpUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -448,7 +445,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F7C8FE1CD8AA5800AF081A /* HttpUtils.swift in Sources */,
 				172E76781CD8801800029483 /* AlamofireManager.swift in Sources */,
 				17E185571CD844FE0067759A /* MainViewController.swift in Sources */,
 				17E185551CD844FE0067759A /* AppDelegate.swift in Sources */,
