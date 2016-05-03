@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		172E76721CD8670E00029483 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172E76711CD8670E00029483 /* AssetsLibrary.framework */; };
-		172E76741CD86BF700029483 /* NavigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E76731CD86BF700029483 /* NavigationContoller.swift */; };
-		172E76761CD86D5D00029483 /* CameraRollViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E76751CD86D5D00029483 /* CameraRollViewControler.swift */; };
 		17E185551CD844FE0067759A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185541CD844FE0067759A /* AppDelegate.swift */; };
 		17E185571CD844FE0067759A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185561CD844FE0067759A /* MainViewController.swift */; };
 		17E1855C1CD844FE0067759A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E1855B1CD844FE0067759A /* Assets.xcassets */; };
@@ -17,7 +15,7 @@
 		17E1856A1CD844FF0067759A /* hackathon_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185691CD844FF0067759A /* hackathon_projectTests.swift */; };
 		17E185751CD844FF0067759A /* hackathon_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185741CD844FF0067759A /* hackathon_projectUITests.swift */; };
 		17E1858E1CD851F00067759A /* function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1858D1CD851F00067759A /* function.swift */; };
-		17E185901CD852340067759A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1858F1CD852340067759A /* ViewController.xib */; };
+		17E185901CD852340067759A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1858F1CD852340067759A /* MainViewController.xib */; };
 		17E185921CD852880067759A /* BaseViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185911CD852880067759A /* BaseViewContoller.swift */; };
 		17E185941CD852BC0067759A /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185931CD852BC0067759A /* Context.swift */; };
 /* End PBXBuildFile section */
@@ -41,8 +39,6 @@
 
 /* Begin PBXFileReference section */
 		172E76711CD8670E00029483 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		172E76731CD86BF700029483 /* NavigationContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContoller.swift; sourceTree = "<group>"; };
-		172E76751CD86D5D00029483 /* CameraRollViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollViewControler.swift; sourceTree = "<group>"; };
 		17E185511CD844FE0067759A /* hackathon-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hackathon-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E185541CD844FE0067759A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E185561CD844FE0067759A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +52,7 @@
 		17E185741CD844FF0067759A /* hackathon_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackathon_projectUITests.swift; sourceTree = "<group>"; };
 		17E185761CD844FF0067759A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E1858D1CD851F00067759A /* function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = function.swift; sourceTree = "<group>"; };
-		17E1858F1CD852340067759A /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		17E1858F1CD852340067759A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		17E185911CD852880067759A /* BaseViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewContoller.swift; sourceTree = "<group>"; };
 		17E185931CD852BC0067759A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,9 +197,7 @@
 			children = (
 				17E1858B1CD851C00067759A /* xib */,
 				17E185911CD852880067759A /* BaseViewContoller.swift */,
-				172E76751CD86D5D00029483 /* CameraRollViewControler.swift */,
 				17E185561CD844FE0067759A /* MainViewController.swift */,
-				172E76731CD86BF700029483 /* NavigationContoller.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -219,7 +213,7 @@
 		17E1858B1CD851C00067759A /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				17E1858F1CD852340067759A /* ViewController.xib */,
+				17E1858F1CD852340067759A /* MainViewController.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -337,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E1855F1CD844FE0067759A /* LaunchScreen.storyboard in Resources */,
-				17E185901CD852340067759A /* ViewController.xib in Resources */,
+				17E185901CD852340067759A /* MainViewController.xib in Resources */,
 				17E1855C1CD844FE0067759A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,11 +358,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E185571CD844FE0067759A /* MainViewController.swift in Sources */,
-				172E76741CD86BF700029483 /* NavigationContoller.swift in Sources */,
 				17E185551CD844FE0067759A /* AppDelegate.swift in Sources */,
 				17E185921CD852880067759A /* BaseViewContoller.swift in Sources */,
 				17E185941CD852BC0067759A /* Context.swift in Sources */,
-				172E76761CD86D5D00029483 /* CameraRollViewControler.swift in Sources */,
 				17E1858E1CD851F00067759A /* function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
