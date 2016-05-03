@@ -14,65 +14,52 @@ import CoreLocation
 class MainViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
+    let distance : CLLocationDistance = 100
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        var clLocationManager: CLLocationManager!
+        clLocationManager = CLLocationManager()
+        clLocationManager.delegate = self
+        clLocationManager.distanceFilter = 100.0
+        clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        let status = CLLocationManager.authorizationStatus()
         
-            var clLocationManager: CLLocationManager!
-
-                clLocationManager = CLLocationManager()
-        
-                clLocationManager.delegate = self
-        
-                clLocationManager.distanceFilter = 100.0
-        
-                clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        
-            let status = CLLocationManager.authorizationStatus()
-        
-            if(status == CLAuthorizationStatus.NotDetermined) {
-                
-                if #available(iOS 8.0, *) {
-                    clLocationManager.requestAlwaysAuthorization()
-                };
-            }
-        
-            clLocationManager.startUpdatingLocation()
-        
-            view.addSubview(mapView)
-        
-            let myLatitude: CLLocationDegrees = 37.506804
-            let myLocation: CLLocationDegrees = 139.930531
-            let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLocation) as CLLocationCoordinate2D
-            let Latdistance : CLLocationDistance = 100
-            let Londistance : CLLocationDistance = 100
-            let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, Latdistance, Londistance);
-        
-            mapView.setRegion(myRegion, animated: true)
-        
-            let mapPin: MKPointAnnotation = MKPointAnnotation()
-        
-            mapPin.coordinate = myCoordinate
-    
-            mapView.addAnnotation(mapPin)
-
+        if(status == CLAuthorizationStatus.NotDetermined) {
+            if #available(iOS 8.0, *) {
+                clLocationManager.requestAlwaysAuthorization()
+            };
         }
+        clLocationManager.startUpdatingLocation()
+        
+        let defaultLatitude: CLLocationDegrees = 37.506804
+        let defaultLocation: CLLocationDegrees = 139.930531
+        let defaultCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(defaultLatitude, defaultLocation) as CLLocationCoordinate2D
+        let defaultRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(defaultCoordinate, distance, distance);
     
-        func locationManagerFunc(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        mapView.setRegion(defaultRegion, animated: true)
+
+        // TODO sample用のpinを打つメソッド
+        // 汎用的に使わせるためにメソッド化させるほうがいいと思う。
+        let mapPin: MKPointAnnotation = MKPointAnnotation()
+        mapPin.coordinate = defaultCoordinate
+        mapView.addAnnotation(mapPin)
         
-            let Locations: NSArray = locations as NSArray
-            let LastLocation: CLLocation = Locations.lastObject as! CLLocation
-            let Location:CLLocationCoordinate2D = LastLocation.coordinate
-            let LatDist : CLLocationDistance = 100
-            let LonDist : CLLocationDistance = 100
-            let Region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(Location, LatDist, LonDist);
-        
-            mapView.setRegion(Region, animated: true)
     }
     
-        func accessCameraroll(button: UIButton) {
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+    func locationManagerFunc(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+
+        let locations: NSArray = locations as NSArray
+        let lastLocation: CLLocation = locations.lastObject as! CLLocation
+        let location:CLLocationCoordinate2D = lastLocation.coordinate
+        let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, distance, distance);
+
+        mapView.setRegion(region, animated: true)
+    }
+    
+    
+    func accessCameraroll(button: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
 
         }
     }
