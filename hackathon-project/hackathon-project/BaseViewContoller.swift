@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MEBaseViewController: UIViewController {
+class BaseViewController: UIViewController {
     
     
     override func loadView() {
@@ -18,15 +18,12 @@ class MEBaseViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        Log(Context.className(self.classForCoder))
     }
     
     override func viewWillAppear(animated: Bool) {
-        Log(Context.className(self.classForCoder))
     }
     
     override func viewWillDisappear(animated: Bool) {
-        Log(Context.className(self.classForCoder))
     }
     
     override func didReceiveMemoryWarning() {
