@@ -22,7 +22,7 @@ class AlamofireManager {
     }
     
     func getPictures() {
-        Alamofire.request(.GET, Const.URL)
+        Alamofire.request(.GET, Const.URL + "/api/post")
             .responseJSON { response in
 
                 if let JSON = response.result.value {
@@ -34,7 +34,7 @@ class AlamofireManager {
 
     
     func postPicture(url: NSURL,latitude: String, longitude: String) {
-        Alamofire.upload(.POST, Const.URL, multipartFormData: { (multipartFormData) in
+        Alamofire.upload(.POST, Const.URL + "/api/post", multipartFormData: { (multipartFormData) in
                 multipartFormData.appendBodyPart(fileURL: url, name: "uploadFile")
             
                 if let data = latitude.dataUsingEncoding(NSUTF8StringEncoding) {

@@ -11,7 +11,7 @@ import Foundation
 struct Const{
     #if DEBUG
     // staging環境
-    static let HOST = "http://192.168.1.75:3000/api/post"
+    static let HOST = "http://192.168.1.75:3000"
     #else
     // 本番環境
     

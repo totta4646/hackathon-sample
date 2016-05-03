@@ -11,15 +11,16 @@ import AssetsLibrary
 import MapKit
 import CoreLocation
 
-class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
+class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let distance : CLLocationDistance = 100
     let clLocationManager: CLLocationManager! = CLLocationManager()
-
+    var tempImageUrl: String = ""
+    
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
-
+    
     var alamofire: AlamofireManager = AlamofireManager.init(delegate: nil)
     
     override func viewDidLoad() {
@@ -29,25 +30,20 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
         alamofire.delegate = self
         alamofire.getPictures()
 
+        mapView.delegate = self
+        
         clLocationManager.delegate = self
-        clLocationManager.distanceFilter = 100.0
+        clLocationManager.distanceFilter = distance
         clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         clLocationManager?.requestWhenInUseAuthorization()
         clLocationManager.startUpdatingLocation()
         
-        let defaultLatitude: CLLocationDegrees = 37.506804
-        let defaultLocation: CLLocationDegrees = 139.930531
+        let defaultLatitude: CLLocationDegrees = 35.674643
+        let defaultLocation: CLLocationDegrees = 139.70452
         let defaultCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(defaultLatitude, defaultLocation) as CLLocationCoordinate2D
         let defaultRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(defaultCoordinate, distance, distance);
     
         mapView.setRegion(defaultRegion, animated: true)
-
-        // TODO sample用のpinを打つメソッド
-        // 汎用的に使わせるためにメソッド化させるほうがいいと思う。
-        let mapPin: MKPointAnnotation = MKPointAnnotation()
-        mapPin.coordinate = defaultCoordinate
-        mapView.addAnnotation(mapPin)
-        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -88,6 +84,43 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
     }
     
     func request(json: AnyObject) {
-        Log(json[0])
+        let posts = json as! Array<AnyObject> as Array
+        
+        for post in posts {
+            let defaultLatitude: CLLocationDegrees = (post["latitude"] as! NSString).doubleValue
+            let defaultLocation: CLLocationDegrees = (post["longitude"] as! NSString).doubleValue
+            let defaultCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(defaultLatitude, defaultLocation) as CLLocationCoordinate2D
+            
+            let mapPin: MKPointAnnotation = MKPointAnnotation()
+            mapPin.coordinate = defaultCoordinate
+            let temp = post["picture"];
+            tempImageUrl = (temp as! Dictionary)["url"]!
+            mapView.addAnnotation(mapPin)
+        }
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        let identifier = "annotation"
+        
+        if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("annotation") {
+            return annotationView
+        } else {
+            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
+            if let url  = NSURL(string: Const.URL + tempImageUrl),
+                data = NSData(contentsOfURL: url) {
+
+                let orgImg = UIImage(data: data)!
+                let resizedSize = CGSizeMake(30, 30);
+                UIGraphicsBeginImageContext(resizedSize);
+                orgImg.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
+                let resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                
+                annotationView.image = resizedImage            }
+
+            return annotationView
+        }
+        
     }
 }
