@@ -17,6 +17,8 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
     let distance : CLLocationDistance = 100
     let clLocationManager: CLLocationManager! = CLLocationManager()
 
+    var latitude: CLLocationDegrees = 0
+    var longitude: CLLocationDegrees = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,9 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
         let location: CLLocationCoordinate2D = newLocation.coordinate
         let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, distance, distance);
 
+        latitude = location.latitude
+        longitude = location.longitude
+        
         mapView.setRegion(region, animated: true)
     }
 
@@ -61,7 +66,7 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
         
         if (fileManager.fileExistsAtPath(filePath)){
             let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
-            AlamofireManager().testAccess(imageNSURL);
+            AlamofireManager().postPicture(imageNSURL, latitude: latitude.description, longitude: longitude.description);
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)

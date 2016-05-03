@@ -10,16 +10,16 @@ import Alamofire
 
 class AlamofireManager {
 
-    func testAccess(url: NSURL) {
+    func postPicture(url: NSURL,latitude: String, longitude: String) {
         Alamofire.upload(.POST, Const.URL, multipartFormData: { (multipartFormData) in
                 multipartFormData.appendBodyPart(fileURL: url, name: "uploadFile")
             
                 // TODO: 位置情報の整理 & サンプルパラメーター
-                if let data = "hoge".dataUsingEncoding(NSUTF8StringEncoding) {
-                    multipartFormData.appendBodyPart(data: data, name: "stringVal")
+                if let data = latitude.dataUsingEncoding(NSUTF8StringEncoding) {
+                    multipartFormData.appendBodyPart(data: data, name: "latitude")
                 }
-                if let data = String(10).dataUsingEncoding(NSUTF8StringEncoding) {
-                    multipartFormData.appendBodyPart(data: data, name: "intVal")
+                if let data = longitude.dataUsingEncoding(NSUTF8StringEncoding) {
+                    multipartFormData.appendBodyPart(data: data, name: "longitude")
                 }
             },
             encodingCompletion: { (encodingResult) in
