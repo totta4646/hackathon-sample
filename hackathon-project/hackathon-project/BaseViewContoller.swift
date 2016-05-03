@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MEBaseViewController: UIViewController {
+class BaseViewController: UIViewController {
     
     
     override func loadView() {
