@@ -8,23 +8,57 @@
 
 import UIKit
 import AssetsLibrary
+import MapKit
+import CoreLocation
 
-class MainViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MainViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
+    
+    @IBOutlet weak var mapView: MKMapView!
+    let distance : CLLocationDistance = 100
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "いちなび"
-    }
     
-    @IBAction func postAction(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            let ImagePicker = UIImagePickerController()
-            ImagePicker.delegate = self
-            ImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            self.presentViewController(ImagePicker, animated: true, completion: nil)
+        var clLocationManager: CLLocationManager!
+        clLocationManager = CLLocationManager()
+        clLocationManager.delegate = self
+        clLocationManager.distanceFilter = 100.0
+        clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        let status = CLLocationManager.authorizationStatus()
+        
+        if(status == CLAuthorizationStatus.NotDetermined) {
+            if #available(iOS 8.0, *) {
+                clLocationManager.requestAlwaysAuthorization()
+            };
         }
+        clLocationManager.startUpdatingLocation()
+        
+        let defaultLatitude: CLLocationDegrees = 37.506804
+        let defaultLocation: CLLocationDegrees = 139.930531
+        let defaultCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(defaultLatitude, defaultLocation) as CLLocationCoordinate2D
+        let defaultRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(defaultCoordinate, distance, distance);
+    
+        mapView.setRegion(defaultRegion, animated: true)
+
+        // TODO sample用のpinを打つメソッド
+        // 汎用的に使わせるためにメソッド化させるほうがいいと思う。
+        let mapPin: MKPointAnnotation = MKPointAnnotation()
+        mapPin.coordinate = defaultCoordinate
+        mapView.addAnnotation(mapPin)
+        
     }
     
+    func locationManagerFunc(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+
+        let locations: NSArray = locations as NSArray
+        let lastLocation: CLLocation = locations.lastObject as! CLLocation
+        let location:CLLocationCoordinate2D = lastLocation.coordinate
+        let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, distance, distance);
+
+        mapView.setRegion(region, animated: true)
+    }
+
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let pickedImage:UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         let fileManager = NSFileManager.defaultManager()
@@ -39,6 +73,15 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+
+    @IBAction func postAction(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let ImagePicker = UIImagePickerController()
+            ImagePicker.delegate = self
+            ImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(ImagePicker, animated: true, completion: nil)
+        }
     }
 }
-

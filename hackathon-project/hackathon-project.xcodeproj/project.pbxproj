@@ -20,6 +20,8 @@
 		17E185901CD852340067759A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E1858F1CD852340067759A /* MainViewController.xib */; };
 		17E185921CD852880067759A /* BaseViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185911CD852880067759A /* BaseViewContoller.swift */; };
 		17E185941CD852BC0067759A /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185931CD852BC0067759A /* Context.swift */; };
+		3B0F53431CD85C8600982323 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0F53421CD85C8600982323 /* CoreLocation.framework */; };
+		3B0F53451CD85C9000982323 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0F53441CD85C9000982323 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		17E185911CD852880067759A /* BaseViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewContoller.swift; sourceTree = "<group>"; };
 		17E185931CD852BC0067759A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		1C1E45AABEB47473919580AF /* Pods-hackathon-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project.debug.xcconfig"; sourceTree = "<group>"; };
+		3B0F53421CD85C8600982323 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3B0F53441CD85C9000982323 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackathon_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61B4D16F0FC5E63284A364D /* Pods-hackathon-project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon-project.release.xcconfig"; path = "Pods/Target Support Files/Pods-hackathon-project/Pods-hackathon-project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0F53451CD85C9000982323 /* MapKit.framework in Frameworks */,
+				3B0F53431CD85C8600982323 /* CoreLocation.framework in Frameworks */,
 				172E76721CD8670E00029483 /* AssetsLibrary.framework in Frameworks */,
 				02A72BBF5FB4C1A99F2D2FAE /* Pods_hackathon_project.framework in Frameworks */,
 			);
@@ -175,6 +181,8 @@
 		17E185841CD8512F0067759A /* Resurce */ = {
 			isa = PBXGroup;
 			children = (
+				3B0F53441CD85C9000982323 /* MapKit.framework */,
+				3B0F53421CD85C8600982323 /* CoreLocation.framework */,
 				17E1858D1CD851F00067759A /* function.swift */,
 				17E1855B1CD844FE0067759A /* Assets.xcassets */,
 			);
@@ -585,10 +593,12 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
 				);
 				INFOPLIST_FILE = "hackathon-project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "gizumo.hackathon-project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
@@ -605,9 +615,11 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
 				);
 				INFOPLIST_FILE = "hackathon-project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gizumo.hackathon-project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
 		};
@@ -639,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "hackathon-projectUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gizumo.hackathon-projectUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -650,6 +663,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "hackathon-projectUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gizumo.hackathon-projectUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
