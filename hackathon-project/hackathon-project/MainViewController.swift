@@ -11,7 +11,7 @@ import AssetsLibrary
 import MapKit
 import CoreLocation
 
-class MainViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
+class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     let distance : CLLocationDistance = 100
@@ -19,11 +19,16 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
 
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
+
+    var alamofire: AlamofireManager = AlamofireManager.init(delegate: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "いちなび"
-    
+        
+        alamofire.delegate = self
+        alamofire.getPictures()
+
         clLocationManager.delegate = self
         clLocationManager.distanceFilter = 100.0
         clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -66,7 +71,7 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
         
         if (fileManager.fileExistsAtPath(filePath)){
             let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
-            AlamofireManager().postPicture(imageNSURL, latitude: latitude.description, longitude: longitude.description);
+            alamofire.postPicture(imageNSURL, latitude: latitude.description, longitude: longitude.description);
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -80,5 +85,9 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
             ImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             self.presentViewController(ImagePicker, animated: true, completion: nil)
         }
+    }
+    
+    func request(json: AnyObject) {
+        Log(json[0])
     }
 }

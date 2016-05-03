@@ -8,13 +8,35 @@
 
 import Alamofire
 
+protocol AlamofireDelegate {
+    func request(json: AnyObject)
+}
+
+
 class AlamofireManager {
 
+    var delegate: AlamofireDelegate? = nil
+
+    init(delegate: AlamofireDelegate?) {
+        self.delegate = delegate
+    }
+    
+    func getPictures() {
+        Alamofire.request(.GET, Const.URL)
+            .responseJSON { response in
+
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    self.delegate?.request(JSON)
+                }
+        }
+    }
+
+    
     func postPicture(url: NSURL,latitude: String, longitude: String) {
         Alamofire.upload(.POST, Const.URL, multipartFormData: { (multipartFormData) in
                 multipartFormData.appendBodyPart(fileURL: url, name: "uploadFile")
             
-                // TODO: 位置情報の整理 & サンプルパラメーター
                 if let data = latitude.dataUsingEncoding(NSUTF8StringEncoding) {
                     multipartFormData.appendBodyPart(data: data, name: "latitude")
                 }
