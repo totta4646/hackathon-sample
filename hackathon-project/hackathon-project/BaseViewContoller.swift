@@ -16,20 +16,4 @@ class BaseViewController: UIViewController {
             self.view = view
         }
     }
-    
-    override func viewDidLoad() {
-        Log(Context.className(self.classForCoder))
-    }
-    
-    override func viewWillAppear(animated: Bool)
-        Log(Context.className(self.classForCoder))
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        Log(Context.className(self.classForCoder))
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
