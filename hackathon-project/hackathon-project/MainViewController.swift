@@ -14,7 +14,6 @@ import CoreLocation
 class MainViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
-    
 
     override func viewDidLoad() {
         
@@ -36,8 +35,6 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
                 
                 if #available(iOS 8.0, *) {
                     clLocationManager.requestAlwaysAuthorization()
-                } else {
-                
                 };
             }
         
@@ -54,7 +51,7 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
         
             mapView.setRegion(myRegion, animated: true)
         
-            var mapPin: MKPointAnnotation = MKPointAnnotation()
+            let mapPin: MKPointAnnotation = MKPointAnnotation()
         
             mapPin.coordinate = myCoordinate
     
@@ -62,12 +59,11 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
 
         }
     
-        func locationManager1(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        func locationManagerFunc(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
-            var Locations: NSArray = locations as NSArray
-            var LastLocation: CLLocation = Locations.lastObject as! CLLocation
-            var Location:CLLocationCoordinate2D = LastLocation.coordinate
-        
+            let Locations: NSArray = locations as NSArray
+            let LastLocation: CLLocation = Locations.lastObject as! CLLocation
+            let Location:CLLocationCoordinate2D = LastLocation.coordinate
             let LatDist : CLLocationDistance = 100
             let LonDist : CLLocationDistance = 100
             let Region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(Location, LatDist, LonDist);
@@ -75,20 +71,16 @@ class MainViewController: BaseViewController, UIImagePickerControllerDelegate, U
             mapView.setRegion(Region, animated: true)
     }
     
-        func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
-            print("regionDidChangeAnimated")
-        }
-    
         func accessCameraroll(button: UIButton) {
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-//            let controller = UIImagePickerController()
-//            controller.delegate = self
-//            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-//            self.presentViewController(controller, animated: true, completion: nil)
+
         }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
+    }
+    @IBAction func postAction(sender: AnyObject) {
+   
     }
 }
