@@ -11,15 +11,13 @@ import Foundation
 struct Const{
     #if DEBUG
     // staging環境
-    static let HOST = "http://hogehoge:10000/"
-    //    static let HOST = "http://localhost:3000/"
+    static let HOST = "http://192.168.1.75:3000"
     #else
+    // 本番環境
     
-    static let HOST = "http://hogehoge/"
     #endif
     
-    static let API_VERSION = "api/v1/"
-    static let URL = HOST + API_VERSION
+    static let URL = HOST
     
     
     // UserDefault
