@@ -181,8 +181,6 @@
 		17E185841CD8512F0067759A /* Resurce */ = {
 			isa = PBXGroup;
 			children = (
-				3B0F53441CD85C9000982323 /* MapKit.framework */,
-				3B0F53421CD85C8600982323 /* CoreLocation.framework */,
 				17E1858D1CD851F00067759A /* function.swift */,
 				17E1855B1CD844FE0067759A /* Assets.xcassets */,
 			);
@@ -256,6 +254,8 @@
 		223F34768FE8C783B7DFF776 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B0F53441CD85C9000982323 /* MapKit.framework */,
+				3B0F53421CD85C8600982323 /* CoreLocation.framework */,
 				172E76711CD8670E00029483 /* AssetsLibrary.framework */,
 				172E76821CD881F100029483 /* Alamofire.framework */,
 				B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */,

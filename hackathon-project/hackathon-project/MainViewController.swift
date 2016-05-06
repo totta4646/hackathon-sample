@@ -16,7 +16,7 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
     @IBOutlet weak var mapView: MKMapView!
     let distance : CLLocationDistance = 100
     let clLocationManager: CLLocationManager! = CLLocationManager()
-    var tempImageUrl: String = ""
+    var tempImageUrl: Array<String> = []
     
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
@@ -94,7 +94,7 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
             let mapPin: MKPointAnnotation = MKPointAnnotation()
             mapPin.coordinate = defaultCoordinate
             let temp = post["picture"];
-            tempImageUrl = (temp as! Dictionary)["url"]!
+            tempImageUrl.append((temp as! Dictionary)["url"]!)
             mapView.addAnnotation(mapPin)
         }
     }
@@ -102,21 +102,23 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         let identifier = "annotation"
         
+        
         if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("annotation") {
             return annotationView
         } else {
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         
-            if let url  = NSURL(string: Const.URL + tempImageUrl),
+            if let url  = NSURL(string: Const.URL + tempImageUrl[0]),
                 data = NSData(contentsOfURL: url) {
 
                 let orgImg = UIImage(data: data)!
-                let resizedSize = CGSizeMake(30, 30);
+                let resizedSize = CGSizeMake(50, 50);
                 UIGraphicsBeginImageContext(resizedSize);
                 orgImg.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
                 let resizedImage = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
-                
+                tempImageUrl.removeAtIndex(0)
+
                 annotationView.image = resizedImage            }
 
             return annotationView
