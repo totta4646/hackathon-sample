@@ -46,10 +46,10 @@ class AlamofireManager {
             },
             encodingCompletion: { (encodingResult) in
                 switch encodingResult {
-                case .Success(let upload, _, _):
+                case .Success( _, _, _):
                     break
 
-                case .Failure(let encodingError):
+                case .Failure( _):
                     break
                     
                 }
