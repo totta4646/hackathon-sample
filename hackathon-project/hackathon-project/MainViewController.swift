@@ -14,9 +14,9 @@ import CoreLocation
 class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    let distance : CLLocationDistance = 100
+    let distance: CLLocationDistance = 100
     let clLocationManager: CLLocationManager! = CLLocationManager()
-    var tempImageUrl: Array<String> = []
+    var tempImageUrl: [String] = []
     
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
@@ -87,27 +87,27 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
         let posts = json as! Array<AnyObject> as Array
         
         for post in posts {
-            let defaultLatitude: CLLocationDegrees = (post["latitude"] as! NSString).doubleValue
-            let defaultLocation: CLLocationDegrees = (post["longitude"] as! NSString).doubleValue
-            let defaultCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(defaultLatitude, defaultLocation) as CLLocationCoordinate2D
+            let latitude: CLLocationDegrees = (post["latitude"] as! NSString).doubleValue
+            let longitude: CLLocationDegrees = (post["longitude"] as! NSString).doubleValue
+            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude) as CLLocationCoordinate2D
             
-            let mapPin: MKPointAnnotation = MKPointAnnotation()
-            mapPin.coordinate = defaultCoordinate
-            let temp = post["picture"];
-            tempImageUrl.append((temp as! Dictionary)["url"]!)
-            mapView.addAnnotation(mapPin)
+            let pin: MKPointAnnotation = MKPointAnnotation()
+            pin.coordinate = coordinate
+
+            tempImageUrl.append((post["picture"] as! Dictionary)["url"]!)
+
+            mapView.addAnnotation(pin)
         }
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "annotation"
         
-        
         if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("annotation") {
             return annotationView
         } else {
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        
+            
             if let url  = NSURL(string: Const.URL + tempImageUrl[0]),
                 data = NSData(contentsOfURL: url) {
 
@@ -117,7 +117,8 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
                 orgImg.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
                 let resizedImage = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
-                tempImageUrl.removeAtIndex(0)
+
+                tempImageUrl.removeFirst()
 
                 annotationView.image = resizedImage            }
 
