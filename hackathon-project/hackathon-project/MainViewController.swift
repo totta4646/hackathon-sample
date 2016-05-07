@@ -99,7 +99,7 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "annotation"
         
         
