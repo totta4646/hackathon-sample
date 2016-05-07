@@ -14,6 +14,9 @@ import CoreLocation
 class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    let alamofire: AlamofireManager = AlamofireManager.init(delegate: nil)
+
     let distance: CLLocationDistance = 100
     let clLocationManager: CLLocationManager! = CLLocationManager()
     var tempImageUrl: [String] = []
@@ -21,7 +24,6 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
     
-    var alamofire: AlamofireManager = AlamofireManager.init(delegate: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +60,10 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
     }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let pickedImage:UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        let fileManager = NSFileManager.defaultManager()
-        // TODO: 一旦ローカル書き込みで回避
-        let filePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/pickedimage.JPG"
-        let imageData = UIImageJPEGRepresentation(pickedImage, 1.0)
-        fileManager.createFileAtPath(filePath, contents: imageData, attributes: nil)
+        let pickedImage: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         
-        if (fileManager.fileExistsAtPath(filePath)){
-            let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
-            alamofire.postPicture(imageNSURL, latitude: latitude.description, longitude: longitude.description);
+        if let imageURL: NSURL = ImageUtils.createImageForFileManager(pickedImage) {
+            alamofire.postPicture(imageURL, latitude: latitude.description, longitude: longitude.description);
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -106,22 +102,15 @@ class MainViewController: BaseViewController, AlamofireDelegate, UIImagePickerCo
         if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("annotation") {
             return annotationView
         } else {
+
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
-            if let url  = NSURL(string: Const.URL + tempImageUrl[0]),
-                data = NSData(contentsOfURL: url) {
-
-                let orgImg = UIImage(data: data)!
-                let resizedSize = CGSizeMake(50, 50);
-                UIGraphicsBeginImageContext(resizedSize);
-                orgImg.drawInRect(CGRectMake(0, 0, resizedSize.width, resizedSize.height))
-                let resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-
+            if let postImage: UIImage = ImageUtils.getByUrl(Const.URL + tempImageUrl[0]) {
                 tempImageUrl.removeFirst()
+                annotationView.image = ImageUtils.resize(postImage, width: 50, height: 50)
 
-                annotationView.image = resizedImage            }
-
+            }
+            
             return annotationView
         }
         

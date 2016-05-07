@@ -14,4 +14,9 @@ struct Context{
         let range = className.rangeOfString(".")
         return className.substringFromIndex(range!.endIndex)
     }
+    
+    static func getExtention(fileName: String) -> String {
+        let url: NSURL =  NSURL(string: fileName)!
+        return url.pathExtension!
+    }
 }

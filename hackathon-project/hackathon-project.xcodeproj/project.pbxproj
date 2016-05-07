@@ -10,6 +10,7 @@
 		02A72BBF5FB4C1A99F2D2FAE /* Pods_hackathon_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91B3CD58612D20BAAF42C6D /* Pods_hackathon_project.framework */; };
 		172E76721CD8670E00029483 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172E76711CD8670E00029483 /* AssetsLibrary.framework */; };
 		172E76781CD8801800029483 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E76771CD8801800029483 /* AlamofireManager.swift */; };
+		173A023D1CDD85DE0002C8FD /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173A023C1CDD85DE0002C8FD /* ImageUtils.swift */; };
 		17E185551CD844FE0067759A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185541CD844FE0067759A /* AppDelegate.swift */; };
 		17E185571CD844FE0067759A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E185561CD844FE0067759A /* MainViewController.swift */; };
 		17E1855C1CD844FE0067759A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E1855B1CD844FE0067759A /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		172E76711CD8670E00029483 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		172E76771CD8801800029483 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		172E76821CD881F100029483 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/hackathon-project-bdzhvxsolmeckwfcktxpdjrnzwga/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		173A023C1CDD85DE0002C8FD /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		17E185511CD844FE0067759A /* hackathon-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hackathon-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E185541CD844FE0067759A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E185561CD844FE0067759A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				17E185931CD852BC0067759A /* Context.swift */,
+				173A023C1CDD85DE0002C8FD /* ImageUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173A023D1CDD85DE0002C8FD /* ImageUtils.swift in Sources */,
 				172E76781CD8801800029483 /* AlamofireManager.swift in Sources */,
 				17E185571CD844FE0067759A /* MainViewController.swift in Sources */,
 				17E185551CD844FE0067759A /* AppDelegate.swift in Sources */,
